@@ -19,7 +19,7 @@ object frmProjeto: TfrmProjeto
     Top = 0
     Width = 718
     Height = 522
-    ActivePage = abaPrj
+    ActivePage = abaFun
     Align = alClient
     TabOrder = 0
     object abaPrj: TTabSheet
@@ -463,6 +463,14 @@ object frmProjeto: TfrmProjeto
         ExplicitTop = 318
         inherited DBNavigator1: TDBNavigator
           Hints.Strings = ()
+        end
+        inherited btnNovo: TButton
+          Left = 68
+          OnClick = frmBotoesPrjbtnNovoClick
+          ExplicitLeft = 68
+        end
+        inherited btnSalvar: TButton
+          OnClick = frmBotoesPrjbtnSalvarClick
         end
       end
       object edtCodigo: TEdit
@@ -987,6 +995,14 @@ object frmProjeto: TfrmProjeto
         ExplicitTop = 327
         inherited DBNavigator1: TDBNavigator
           Hints.Strings = ()
+        end
+        inherited btnNovo: TButton
+          OnClick = frmBotoesFunbtnNovoClick
+        end
+        inherited btnSalvar: TButton
+          Left = 143
+          OnClick = frmBotoesFunbtnSalvarClick
+          ExplicitLeft = 143
         end
       end
       object codFuncionario: TEdit

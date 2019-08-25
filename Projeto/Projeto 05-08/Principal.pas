@@ -14,12 +14,12 @@ type
     Cargo1: TMenuItem;
     Cargo2: TMenuItem;
     Funcionrio1: TMenuItem;
-    Relatrios1: TMenuItem;
+    Relatorios1: TMenuItem;
     Sair1: TMenuItem;
     Sobre1: TMenuItem;
     Image1: TImage;
     lblUsuario: TLabel;
-    fafaefafas1: TMenuItem;
+    Projeto: TMenuItem;
     btnProjeto: TSpeedButton;
     btnFuncionario: TSpeedButton;
     Painel: TPanel;
@@ -30,6 +30,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnFuncionarioClick(Sender: TObject);
     procedure btnProjetoClick(Sender: TObject);
+    procedure ProjetoClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -57,6 +58,12 @@ procedure TfrmPrincipal.Cargo2Click(Sender: TObject);
 begin
   frmCargo := TfrmCargo.Create(self);
   frmCargo.ShowModal;
+end;
+
+procedure TfrmPrincipal.ProjetoClick(Sender: TObject);
+begin
+  frmProjeto := TfrmProjeto.create(self);
+  frmProjeto.ShowModal;
 end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);

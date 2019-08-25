@@ -40,7 +40,14 @@ type
     lblDescricao: TLabel;
     procedure habilitaPrj();
     procedure desabilitaPrj();
+    procedure habilitaFun();
+    procedure desabilitaFun();
     procedure FormCreate(Sender: TObject);
+    procedure frmBotoesPrjbtnNovoClick(Sender: TObject);
+    procedure frmBotoesPrjbtnSalvarClick(Sender: TObject);
+    procedure frmBotoesFunbtnNovoClick(Sender: TObject);
+    procedure frmBotoesFunbtnSalvarClick(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -55,32 +62,104 @@ implementation
 {$R *.dfm}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 { TfrmProjeto }
 
 procedure TfrmProjeto.FormCreate(Sender: TObject);
 begin
-     desabilitaPrj();
-     frmBotoesPrj.btnNovo:=TRUE;
-     frmBotoesPrj.btnSalvar:=FALSE;
-     frmBotoesPrj.btnEditar:=FALSE;
-     frmBotoesPrj.btnExcluir:=FALSE;
+    desabilitaPrj();
+    desabilitaFun();
+    //Botoes de projeto
+    frmBotoesPrj.btnNovo.Enabled:=TRUE;
+    frmBotoesPrj.btnSalvar.Enabled:=FALSE;
+    frmBotoesPrj.btnEditar.Enabled:=FALSE;
+    frmBotoesPrj.btnExcluir.Enabled:=FALSE;
+    //Botoes de Funcionarios
+    frmBotoesFun.btnNovo.Enabled:=TRUE;
+    frmBotoesFun.btnSalvar.Enabled:=FALSE;
+    frmBotoesFun.btnEditar.Enabled:=FALSE;
+    frmBotoesFun.btnExcluir.Enabled:=FALSE;
+
+
+end;
+
+
+
+procedure TfrmProjeto.frmBotoesPrjbtnNovoClick(Sender: TObject);
+begin
+  habilitaPrj();
+  frmBotoesPrj.btnNovo.Enabled:=FALSE;
+  frmBotoesPrj.btnSalvar.Enabled:=TRUE;
+  frmBotoesPrj.btnEditar.Enabled:=FALSE;
+  frmBotoesPrj.btnExcluir.Enabled:=FALSE;
+end;
+
+procedure TfrmProjeto.frmBotoesPrjbtnSalvarClick(Sender: TObject);
+begin
+  if(edtTitulo.Text='')then
+  begin
+    ShowMessage('O título precisa ser preenchido');
+    edtTitulo.SetFocus;
+  end
+  else
+  begin
+    //Gravação no banco de dados
+    ShowMessage('Dados salvos');
+    desabilitaPrj();
+    frmBotoesPrj.btnNovo.Enabled:=TRUE;
+    frmBotoesPrj.btnSalvar.Enabled:=TRUE;
+    frmBotoesPrj.btnEditar.Enabled:=FALSE;
+    frmBotoesPrj.btnExcluir.Enabled:=FALSE;
+  end;
+end;
+
+
+procedure TfrmProjeto.frmBotoesFunbtnNovoClick(Sender: TObject);
+begin
+  habilitaFun();
+  frmBotoesFun.btnNovo.Enabled:=FALSE;
+  frmBotoesFun.btnSalvar.Enabled:=TRUE;
+  frmBotoesFun.btnEditar.Enabled:=FALSE;
+  frmBotoesFun.btnExcluir.Enabled:=FALSE;
+end;
+
+
+procedure TfrmProjeto.frmBotoesFunbtnSalvarClick(Sender: TObject);
+begin
+  if((cmbProjeto.Text='')or(cmbFuncionario.Text=''))then
+  begin
+    ShowMessage('Os dados precisam ser preenchidos');
+    cmbProjeto.SetFocus;
+  end
+  else
+  begin
+    //Gravação no banco de dados
+    ShowMessage('Dados salvos');
+    desabilitaFun();
+    frmBotoesFun.btnNovo.Enabled:=TRUE;
+    frmBotoesFun.btnSalvar.Enabled:=FALSE;
+    frmBotoesFun.btnEditar.Enabled:=FALSE;
+    frmBotoesFun.btnExcluir.Enabled:=FALSE;
+  end;
+end;
+
+procedure TfrmProjeto.habilitaFun;
+begin
+    cmbProjeto.Enabled:=TRUE;
+    cmbFuncionario.Enabled:=TRUE;
+end;
+
+procedure TfrmProjeto.desabilitaFun;
+begin
+  cmbProjeto.Enabled:=FALSE;
+  cmbFuncionario.Enabled:=FALSE;
+  //Limpa os campos da aba funcionarios do projeto
+  cmbProjeto.Clear;
+  cmbFuncionario.Clear;
 end;
 
 procedure TfrmProjeto.habilitaPrj;
 begin
+  //Habilita todos os campos
   edtCodigo.Enabled:= TRUE;
   edtTitulo.Enabled:= TRUE;
   MemoDescricao.Enabled:= TRUE;
@@ -92,6 +171,7 @@ end;
 
 procedure TfrmProjeto.desabilitaPrj;
 begin
+  //Desabilita todos os campos
   edtCodigo.Enabled:= FALSE;
   edtTitulo.Enabled:= FALSE;
   MemoDescricao.Enabled:= FALSE;
@@ -99,6 +179,11 @@ begin
   DateTimePicker2.Enabled:= FALSE;
   cmbReponsavel.Enabled:= FALSE;
   cbConcluido.Enabled:= FALSE;
+  //Limpa os campos
+  edtCodigo.Clear;
+  edtTitulo.Clear;
+  MemoDescricao.Clear;
+  cmbReponsavel.Clear;
 end;
 
 

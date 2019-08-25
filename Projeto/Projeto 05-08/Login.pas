@@ -46,6 +46,7 @@ begin
   end
   else
   begin
+    //Salvando no banco de dados
     usuario :=edtUsuario.Text;
     frmPrincipal:= TfrmPrincipal.Create(self);
     frmPrincipal.Show;

@@ -422,8 +422,6 @@ object frmPrincipal: TfrmPrincipal
     Align = alTop
     Alignment = taLeftJustify
     TabOrder = 0
-    ExplicitLeft = -32
-    ExplicitTop = 8
     object btnProjeto: TSpeedButton
       Left = 40
       Top = 24
@@ -862,10 +860,11 @@ object frmPrincipal: TfrmPrincipal
         OnClick = Funcionrio1Click
       end
     end
-    object fafaefafas1: TMenuItem
+    object Projeto: TMenuItem
       Caption = '&Projeto'
+      OnClick = ProjetoClick
     end
-    object Relatrios1: TMenuItem
+    object Relatorios1: TMenuItem
       Caption = '&Relat'#243'rios'
     end
     object Sobre1: TMenuItem

@@ -80,6 +80,10 @@ end;
 procedure TfrmFuncionarios.TFrame11btnNovoClick(Sender: TObject);
 begin
   Habilita();
+  TFrame11.btnNovo.Enabled:=FALSE;
+  TFrame11.btnSalvar.Enabled:=TRUE;
+  Tframe11.btnEditar.Enabled:=FALSE;
+  TFrame11.btnExcluir.Enabled:=FALSE;
 end;
 
 procedure TfrmFuncionarios.TFrame11btnSalvarClick(Sender: TObject);
@@ -91,6 +95,7 @@ begin
   end
   else
   begin
+    //Gravação no banco de dados
     ShowMessage('Dados salvos');
     edtCodigo.Enabled:= FALSE;
     edtNome.Enabled:= FALSE;
@@ -100,6 +105,7 @@ begin
     TFrame11.btnSalvar.Enabled:=FALSE;
     Tframe11.btnEditar.Enabled:=FALSE;
     TFrame11.btnExcluir.Enabled:=FALSE;;
+    Desabilita();
   end;
 end;
 
