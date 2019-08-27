@@ -17,9 +17,9 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.Title := 'Controle de Funcionários';
+  Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmFuncionarios, frmFuncionarios);
-  Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmCargo, frmCargo);
   Application.CreateForm(TfrmSobre, frmSobre);
   Application.CreateForm(TDataModule1, DataModule1);

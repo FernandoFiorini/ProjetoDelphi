@@ -49,7 +49,7 @@ begin
     //Salvando no banco de dados
     usuario :=edtUsuario.Text;
     frmPrincipal:= TfrmPrincipal.Create(self);
-    frmPrincipal.Show;
+    frmPrincipal.ShowModal;
     frmLogin.Close;
   end;
 

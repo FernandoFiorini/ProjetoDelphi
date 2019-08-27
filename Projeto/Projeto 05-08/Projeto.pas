@@ -66,6 +66,7 @@ implementation
 
 procedure TfrmProjeto.FormCreate(Sender: TObject);
 begin
+    //Desabilita os campos dos dois forms
     desabilitaPrj();
     desabilitaFun();
     //Botoes de projeto
@@ -86,6 +87,7 @@ end;
 
 procedure TfrmProjeto.frmBotoesPrjbtnNovoClick(Sender: TObject);
 begin
+  //Quando clicar no botaoPRJ novo
   habilitaPrj();
   frmBotoesPrj.btnNovo.Enabled:=FALSE;
   frmBotoesPrj.btnSalvar.Enabled:=TRUE;
@@ -95,6 +97,7 @@ end;
 
 procedure TfrmProjeto.frmBotoesPrjbtnSalvarClick(Sender: TObject);
 begin
+  //Validação do campo titulo do projeto do form Dados do projeto
   if(edtTitulo.Text='')then
   begin
     ShowMessage('O título precisa ser preenchido');
@@ -115,6 +118,7 @@ end;
 
 procedure TfrmProjeto.frmBotoesFunbtnNovoClick(Sender: TObject);
 begin
+  //Quando clicar no botaoFun novo
   habilitaFun();
   frmBotoesFun.btnNovo.Enabled:=FALSE;
   frmBotoesFun.btnSalvar.Enabled:=TRUE;
@@ -125,6 +129,7 @@ end;
 
 procedure TfrmProjeto.frmBotoesFunbtnSalvarClick(Sender: TObject);
 begin
+  //Validar o campo projeto e funcionario da form Funcionarios do projeto
   if((cmbProjeto.Text='')or(cmbFuncionario.Text=''))then
   begin
     ShowMessage('Os dados precisam ser preenchidos');
@@ -144,6 +149,7 @@ end;
 
 procedure TfrmProjeto.habilitaFun;
 begin
+    //Desabilitando os campos do form Funcionarios do projeto
     cmbProjeto.Enabled:=TRUE;
     cmbFuncionario.Enabled:=TRUE;
 end;
